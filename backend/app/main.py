@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
-from app.api.v1.router import router
+from app.api.v1.router import router as v1_router
+from app.api.auth import router as auth_router
+from app.api.chat import router as chat_router
+from app.api.mood import router as mood_router
+from app.api.memory import router as memory_router
 
 
 app = FastAPI(
@@ -47,4 +51,8 @@ def health():
     return {"status": "ok"}
 
 
-app.include_router(router)
+app.include_router(v1_router)
+app.include_router(auth_router)
+app.include_router(chat_router)
+app.include_router(mood_router)
+app.include_router(memory_router)
