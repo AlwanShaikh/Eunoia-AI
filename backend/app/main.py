@@ -26,15 +26,18 @@ app = FastAPI(title="Eunoia API", version="0.1.0")
 
 # ── CORS ─────────────────────────────────────────────────────────────────────
 allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in allowed_origins if origin.strip()],
+    allow_origins=[
+        "https://eunoia-9o34gxdhp-alwan-shaikh.vercel.app",
+        "http://localhost:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # ── Routers ──────────────────────────────────────────────────────────────────
 from app.api.chat import router as chat_router
 from app.api.auth import router as auth_router
