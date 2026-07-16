@@ -16,7 +16,7 @@ app = FastAPI(
 
 
 allowed_origins = [
-    "https://eunoia-pkyn53hkm-alwan-shaikh.vercel.app",
+    "https://eunoia-cvux6sh3l-alwan-shaikh.vercel.app/",
     "http://localhost:3000",
 ]
 
